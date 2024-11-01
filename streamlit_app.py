@@ -13,10 +13,10 @@ def query(payload):
         return f"Error: {response.status_code}"
 
 # Main content: Chat interface
-st.title("💬 Alex, Career Advisor in Finance")
+st.title("👾 Alex, Career Advisor in Finance")
 st.markdown(
     """
-    - 👾 Alex is an AI Agent that answers your questions regarding Finance and Investment Banking Recruiting.
+    - Alex is an AI Agent that answers your questions regarding Finance and Investment Banking Recruiting.
     - Talk with him by entering your question in the chatbox below.
     - To provide accurate and high-performance answers, this AI Agent was built using a multiple-agent framework.
     - 🚥 Processing time can be slower than ChatGPT, please wait patiently while the AI is running.
