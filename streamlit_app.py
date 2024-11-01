@@ -33,7 +33,7 @@ st.markdown(
     """
     - Alex is an AI Agent that answers your questions regarding Finance and Investment Banking Recruiting.
     - Talk with him by entering your question in the chatbox below.
-    - To provide accurate and high-performance answers, this AI Agent was built using a multiple-agent framework.
+    - To provide accurate and high-performance answers, this AI Agent was built using a multiple-agent framework. This enables Alex to deliver insights with sharper reasoning than ChatGPT.
     - 🚥 Processing time can be slower than ChatGPT, please wait patiently while the AI is running.
     """
 )
