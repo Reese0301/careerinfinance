@@ -90,7 +90,7 @@ with st.sidebar:
         <div style="background-color: #f0f0f5; padding: 20px; border-radius: 10px;">
             <h4>💡 Suggested Prompts</h4>
             <ul>
-                <li>What are the key skills for a career in investment banking?</li>
+                <li>What are the key steps to develop a career in investment banking?</li>
                 <li>Surprise me with one insight on Investment Banking Recruiting.</li>
                 <li>What are the dos and donts of a superday interview?</li>
                 <li>Can you suggest networking strategies for international students? </li>
