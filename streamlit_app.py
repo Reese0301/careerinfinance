@@ -32,10 +32,10 @@ st.title("💬 Alex, Career Advisor in Finance")
 st.markdown(
     """
     - Alex is an AI Agent that answers your questions regarding Finance and Investment Banking Recruiting.
-    - Talk with him by entering your question in the chatbox below.
     - To provide accurate and high-performance answers, Alex was built using a multiple-agent framework. 
     - 🧠 This enables him to deliver valuable insights with sharper reasoning than ChatGPT.
     - 🚥 Processing time can be slower than ChatGPT, please wait patiently while the AI is running.
+    - Talk with him by entering your question in the chatbox below.
     """
 )
 
@@ -93,7 +93,7 @@ with st.sidebar:
                 <li>What are the key skills for a career in investment banking?</li>
                 <li>Surprise me with one insight on Investment Banking Recruiting.</li>
                 <li>What are the dos and donts of a superday interview?</li>
-                <li>Can you suggest networking strategies for finance professionals?</li>
+                <li>Can you suggest networking strategies for international students?</li>
             </ul>
             <div style="margin-top: 20px; border-top: 1px solid #ccc; padding-top: 10px; text-align: center;">
                 <small>For Feedback or Concerns, contact: <a href="mailto:yizhuoyang@hotmail.com">yizhuoyang@hotmail.com</a></small>
