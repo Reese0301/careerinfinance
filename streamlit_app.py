@@ -5,7 +5,7 @@ import requests
 st.title("💬 Career Advisor in Finance")
 st.write(
     "This chatbot answers Finance recruiting questions."
-    "To use this app, enter your query in the chat below."
+    " To use this app, enter your query in the chat below."
 )
 
 # Set your Flowise API URL
