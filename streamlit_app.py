@@ -13,7 +13,7 @@ def query(payload):
         return f"Error: {response.status_code}"
 
 # Main content: Chat interface
-st.title("💬 Alex, AI Career Advisor in Finance")
+st.title("💬 Alex, Career Advisor in Finance")
 st.markdown(
     """
     - 👾 Alex is an AI Agent that answers your questions regarding Finance and Investment Banking Recruiting.
