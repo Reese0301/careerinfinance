@@ -13,7 +13,7 @@ st.markdown(
 )
 
 # Set your Flowise API URL
-API_URL = "https://flowise-9kx9.onrender.com/api/v1/prediction/cef2a608-65a9-4813-a3a7-171a153c40b3"
+API_URL = "https://flowise-9kx9.onrender.com/api/v1/prediction/a0e0fb9b-59d8-44ab-a606-06d63f33d541"
 
 # Function to send queries to the API
 def query(payload):
