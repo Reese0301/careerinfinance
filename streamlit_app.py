@@ -1,8 +1,23 @@
 import streamlit as st
 import requests
+import random
 
 # Set your Flowise API URL
 API_URL = "https://flowise-9kx9.onrender.com/api/v1/prediction/cef2a608-65a9-4813-a3a7-171a153c40b3"
+
+# List of randomized "thinking" messages
+thinking_messages = [
+    "Alex is Crunching the numbers…",
+    "Running a DCF… please hold for a valuation.",
+    "Checking with the M&A team… Alex will be right back.",
+    "Consulting the deal book…",
+    "Reviewing the pitch deck… insights coming soon.",
+    "Adjusting the financial model…",
+    "Running a few more Monte Carlo simulations… hang tight!",
+    "Preparing a high-stakes IPO answer… patience pays dividends.",
+    "Just a moment… Alex is cutting through red tape.",
+    "The market's in flux… recalibrating!"
+]
 
 # Function to send queries to the API
 def query(payload):
@@ -51,8 +66,16 @@ if prompt := st.chat_input("Ask your question here..."):
     with st.chat_message("user", avatar="https://github.com/Reese0301/GIS-AI-Agent/blob/main/FoxUser.png?raw=true"):
         st.markdown(prompt)
 
+    # Display a random "Alex is thinking..." message
+    thinking_message = random.choice(thinking_messages)
+    thinking_placeholder = st.empty()
+    thinking_placeholder.markdown(f"💭 **{thinking_message}**")
+
     # Send the query to your custom API
     response_content = query({"question": prompt})
+
+    # Clear the thinking message after receiving the response
+    thinking_placeholder.empty()
 
     # Display the assistant's response with the assistant avatar
     with st.chat_message("assistant", avatar="https://github.com/Reese0301/GIS-AI-Agent/blob/main/4322991.png?raw=true"):
@@ -75,3 +98,5 @@ with st.sidebar:
         """,
         unsafe_allow_html=True
     )
+
+
