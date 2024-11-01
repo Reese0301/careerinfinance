@@ -17,8 +17,8 @@ st.title("💬 Career Advisor in Finance")
 st.markdown(
     """
     - 👾 Alex is an AI Agent that answers your questions regarding Finance and Investment Banking Recruiting.
-    - ❔ Talk with him by entering your question in the chatbox below.
-    - ✨ To provide accurate and high-performance answers, this AI Agent was built using a multiple-agent framework.
+    - Talk with him by entering your question in the chatbox below.
+    - To provide accurate and high-performance answers, this AI Agent was built using a multiple-agent framework.
     - 🚥 Processing time can be slower than ChatGPT, please wait patiently while the AI is running.
     """
 )
