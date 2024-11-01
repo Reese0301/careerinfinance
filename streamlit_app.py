@@ -94,9 +94,10 @@ with st.sidebar:
                 <li>What are the dos and donts of a superday interview?</li>
                 <li>Can you suggest networking strategies for finance professionals?</li>
             </ul>
+            <div style="margin-top: 20px; border-top: 1px solid #ccc; padding-top: 10px; text-align: center;">
+                <small>For Feedback or Concerns, contact: <a href="mailto:yizhuoyang@hotmail.com">yizhuoyang@hotmail.com</a></small>
+            </div>
         </div>
         """,
         unsafe_allow_html=True
     )
-
-
