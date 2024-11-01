@@ -93,7 +93,7 @@ with st.sidebar:
                 <li>What are the key skills for a career in investment banking?</li>
                 <li>Surprise me with one insight on Investment Banking Recruiting.</li>
                 <li>What are the dos and donts of a superday interview?</li>
-                <li>Can you suggest networking strategies for international students?</li>
+                <li>Can you suggest networking strategies for international students? </li>
             </ul>
             <div style="margin-top: 20px; border-top: 1px solid #ccc; padding-top: 10px; text-align: center;">
                 <small>For Feedback or Concerns, contact: <a href="mailto:yizhuoyang@hotmail.com">yizhuoyang@hotmail.com</a></small>
