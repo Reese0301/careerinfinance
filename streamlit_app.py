@@ -4,8 +4,10 @@ import requests
 # Show title and description.
 st.title("💬 Career Advisor in Finance")
 st.write(
-    "This chatbot answers Finance recruiting questions."
-    " To use this app, enter your query in the chat below."
+    "This AI Agent answers questions regarding Finance and Investment Banking Recruiting."
+    " Talk with the AI by entering your query in the chatbox below."
+    " To provide accurate and high performance answers, this AI Agent was built using a multiple-agent framework."
+    " Processing time can be slower than ChatGPT, please wait patiently while the AI is running."
 )
 
 # Set your Flowise API URL
