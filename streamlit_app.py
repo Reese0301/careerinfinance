@@ -3,7 +3,7 @@ import requests
 import random
 
 # Set your Flowise API URL
-API_URL = st.secrets("API_URL")
+API_URL = st.secrets["API_URL"]
 
 # List of randomized "thinking" messages
 thinking_messages = [
