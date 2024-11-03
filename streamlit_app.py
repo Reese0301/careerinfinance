@@ -43,8 +43,8 @@ def query(context, prompt, model):
         "question": f"{context}\n\nUser Question: {prompt}"
     }
     
-# Debugging output to check the payload before sending
-    #st.write("Sending payload:", payload)
+    # Debugging output to check the payload before sending
+    # st.write("Sending payload:", payload)
 
     response = requests.post(api_url, json=payload)
     if response.status_code == 200:
@@ -59,7 +59,7 @@ st.markdown(
     - I am AI Agent that answers your questions regarding Finance and Investment Banking Recruiting.
     - To provide accurate and high-performance answers, I was built using a multiple-agent framework. 
     - 🧠 This enables me to deliver valuable insights with sharper reasoning than ChatGPT.
-    - 🎓 Mentor Mode: I serves as your personal tutor, encouraging thoughtful reflection and helping you develop skills for continuous improvement.
+    - 🎓 Mentor Mode: I serve as your personal tutor, encouraging thoughtful reflection and helping you develop skills for continuous improvement.
     - 💯 Expert Mode: I deliver advanced, high-precision insights to address complex questions with maximum accuracy. (I will think longer, please be patient!)
     """
 )
@@ -87,10 +87,10 @@ if prompt := st.chat_input("Ask your question here..."):
     # Start the timer
     start_time = time.time()
     
-    # Limit the conversation context to the last 3 messages
+    # Limit the conversation context to the last 5 messages
     CONTEXT_LIMIT = 5
     context = ""
-    for msg in st.session_state.messages[-CONTEXT_LIMIT:]:  # Only take the last 3 messages
+    for msg in st.session_state.messages[-CONTEXT_LIMIT:]:  # Only take the last 5 messages
         if msg["role"] == "assistant":
             context += f"Assistant: {msg['content']}\n"
         elif msg["role"] == "user":
@@ -106,9 +106,13 @@ if prompt := st.chat_input("Ask your question here..."):
     # Clear the thinking message after receiving the response
     thinking_placeholder.empty()
 
-    # Display the assistant's response with the assistant avatar and response time
+    # Display the assistant's response with the assistant avatar
     with st.chat_message("assistant", avatar="https://github.com/Reese0301/GIS-AI-Agent/blob/main/4322991.png?raw=true"):
-        st.markdown(f"💭 Thought for {response_time:.2f} seconds\n\n{response_content}")
+        # Show the response time only for Expert mode
+        if model_choice == "Expert":
+            st.markdown(f"💭 Thought for {response_time:.2f} seconds\n\n{response_content}")
+        else:
+            st.markdown(response_content)
     
     # Append the assistant's response to the session state chat history
     st.session_state.messages.append({"role": "assistant", "content": response_content})
