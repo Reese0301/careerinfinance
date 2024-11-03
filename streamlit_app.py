@@ -1,6 +1,7 @@
 import streamlit as st
 import requests
 import random
+import time  # Import the time module for tracking response time
 
 # Set your Flowise API URL
 API_URL = st.secrets["API_URL"]
@@ -72,16 +73,23 @@ if prompt := st.chat_input("Ask your question here..."):
     thinking_placeholder = st.empty()
     thinking_placeholder.markdown(f"💭 **{thinking_message}**")
 
+    # Start the timer
+    start_time = time.time()
+    
     # Send the query to your custom API
     response_content = query({"question": prompt})
+    
+    # End the timer
+    end_time = time.time()
+    response_time = end_time - start_time  # Calculate the response time in seconds
 
     # Clear the thinking message after receiving the response
     thinking_placeholder.empty()
 
-    # Display the assistant's response with the assistant avatar
+    # Display the assistant's response with the assistant avatar and response time
     with st.chat_message("assistant", avatar="https://github.com/Reese0301/GIS-AI-Agent/blob/main/4322991.png?raw=true"):
-        st.markdown(response_content)
-    st.session_state.messages.append({"role": "assistant", "content": response_content})
+        st.markdown(f"💭 Thought for {response_time:.2f} seconds\n\n{response_content}")
+    st.session_state.messages.append({"role": "assistant", "content": f"Thought for {response_time:.2f} seconds\n\n{response_content}"})
 
 # Sidebar for suggested prompts or custom messages
 with st.sidebar:
