@@ -21,7 +21,7 @@ thinking_messages = [
     "The market's in flux… recalibrating!"
 ]
 
-# Initialize session state for chat messages and context if not already set
+# Initialize session state for chat messages, resume, and context if not already set
 if "messages" not in st.session_state:
     st.session_state.messages = []
     # Add a default welcome message from the assistant
@@ -29,21 +29,90 @@ if "messages" not in st.session_state:
         "role": "assistant", 
         "content": "Hello! I'm here to assist you with any finance recruiting questions you may have. How can I help you today?"
     })
+if "resume" not in st.session_state:
+    st.session_state.resume = ""  # Placeholder for resume content
 
-# Selector for choosing between Mentor and Expert model
-model_choice = st.selectbox("Choose AI Model", options=["Mentor", "Expert"])
+# Sidebar for model selector, additional inputs, and resume entry
+with st.sidebar:
+    # Model selector at the top of the sidebar
+    model_choice = st.selectbox("Choose AI Model", options=["Mentor", "Expert"])
+
+    # Conditionally show sliders for Mentor model
+    if model_choice == "Mentor":
+        # Set "Practical" as the default value for Outlook
+        outlook = st.select_slider("Outlook", options=["Pessimistic", "Practical", "Optimistic"], value="Practical")
+        # Set "Socratic" as the default value for Coaching Style
+        coaching_style = st.select_slider("Coaching Style", options=["Didactic", "Socratic"], value="Socratic")
+
+    # Suggested prompts section
+    st.markdown(
+        """
+        <div style="background-color: #f0f0f5; padding: 20px; border-radius: 10px;">
+            <h4>💡 Suggested Prompts</h4>
+            <ul>
+                <li>What are the key steps to develop a career in investment banking?</li>
+                <li>Surprise me with one insight on Investment Banking Recruiting.</li>
+                <li>What are the dos and donts of a superday interview?</li>
+                <li>Can you suggest networking strategies for international students?</li>
+            </ul>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
+    # Resume input text area and button for sending
+    resume_text = st.text_area("Paste your resume here if you’d like Alex to remember your information for this session (Experimental Feature):")
+
+    # Button to submit resume content
+    if st.button("📄 Send Resume"):
+        # Save resume content in session state when button is clicked
+        st.session_state.resume = resume_text
+        st.success("Resume sent successfully!")  # Optional feedback message for user
+
+        # Append a system message to indicate that the user has uploaded a resume
+        st.session_state.messages.append({
+            "role": "system",
+            "content": "The user has uploaded their resume, which contains their information."
+        })
+
+    # Feedback and concerns section moved to the bottom
+    st.markdown(
+        """
+        <div style="margin-top: 20px; border-top: 1px solid #ccc; padding-top: 10px; text-align: center;">
+            <small>For Feedback or Concerns, contact: <a href="mailto:yizhuoyang@hotmail.com">yizhuoyang@hotmail.com</a></small>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 
 # Function to send queries to the appropriate API based on model choice
-def query(context, prompt, model):
+def query(context, prompt, model, outlook=None, coaching_style=None):
     # Select the API URL based on model choice
     api_url = API_URL_MENTOR if model == "Mentor" else API_URL_EXPERT
+
+    # Append additional metadata based on Mentor settings
+    additional_metadata = ""
+    if model == "Mentor":
+        if outlook == "Pessimistic":
+            additional_metadata += "Be more realistic and critical about the user's current situation and career outlook.\n"
+        elif outlook == "Optimistic":
+            additional_metadata += "Encourage a positive and forward-looking perspective in responses.\n"
+        
+        if coaching_style == "Didactic":
+            additional_metadata += "Be comprehensive in your answers and avoid asking Socratic questions.\n"
+        elif coaching_style == "Socratic":
+            additional_metadata += "After answering, use the Socratic method to ask the user one question to guide them toward deeper self-understanding of their situation and the finance industry.\n"
+
+    # Append resume to context if provided
+    context_with_resume = f"{st.session_state.resume}\n\n{context}" if st.session_state.resume else context
+    full_context = f"{additional_metadata}{context_with_resume}"
     
     # Payload includes the refined question as a standalone prompt
     payload = {
-        "question": f"{context}\n\nUser Question: {prompt}"
+        "question": f"{full_context}\n\nUser Question: {prompt}"
     }
-    
-    # Debugging output to check the payload before sending
+
+    # Debugging output to check the payload before sending! NEVER DELETE THIS PLEASE.
     # st.write("Sending payload:", payload)
 
     response = requests.post(api_url, json=payload)
@@ -95,9 +164,11 @@ if prompt := st.chat_input("Ask your question here..."):
             context += f"Assistant: {msg['content']}\n"
         elif msg["role"] == "user":
             context += f"User: {msg['content']}\n"
+        elif msg["role"] == "system":
+            context += f"System: {msg['content']}\n"
     
     # Send the refined standalone question to the selected model API
-    response_content = query(context, prompt, model_choice)
+    response_content = query(context, prompt, model_choice, outlook if model_choice == "Mentor" else None, coaching_style if model_choice == "Mentor" else None)
     
     # End the timer
     end_time = time.time()
@@ -116,23 +187,3 @@ if prompt := st.chat_input("Ask your question here..."):
     
     # Append the assistant's response to the session state chat history
     st.session_state.messages.append({"role": "assistant", "content": response_content})
-
-# Sidebar for suggested prompts or custom messages
-with st.sidebar:
-    st.markdown(
-        """
-        <div style="background-color: #f0f0f5; padding: 20px; border-radius: 10px;">
-            <h4>💡 Suggested Prompts</h4>
-            <ul>
-                <li>What are the key steps to develop a career in investment banking?</li>
-                <li>Surprise me with one insight on Investment Banking Recruiting.</li>
-                <li>What are the dos and donts of a superday interview?</li>
-                <li>Can you suggest networking strategies for international students? </li>
-            </ul>
-            <div style="margin-top: 20px; border-top: 1px solid #ccc; padding-top: 10px; text-align: center;">
-                <small>For Feedback or Concerns, contact: <a href="mailto:yizhuoyang@hotmail.com">yizhuoyang@hotmail.com</a></small>
-            </div>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
