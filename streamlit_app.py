@@ -44,10 +44,22 @@ with st.sidebar:
         # Set "Socratic" as the default value for Coaching Style
         coaching_style = st.select_slider("Coaching Style", options=["Didactic", "Socratic"], value="Socratic")
 
-    # Suggested prompts section
+    # CSS for suggested prompts box to support dark and light mode
     st.markdown(
         """
-        <div style="background-color: #f0f0f5; padding: 20px; border-radius: 10px;">
+        <style>
+        .suggested-prompts {
+            background-color: rgba(240, 240, 245, 0.1); /* Semi-transparent for dark/light mode */
+            padding: 20px;
+            border-radius: 10px;
+            color: inherit; /* Inherits text color based on theme */
+        }
+        .suggested-prompts h4, .suggested-prompts ul {
+            color: inherit; /* Ensures text adapts to dark/light mode */
+        }
+        </style>
+        
+        <div class="suggested-prompts">
             <h4>💡 Suggested Prompts</h4>
             <ul>
                 <li>What are the key steps to develop a career in investment banking?</li>
@@ -112,7 +124,7 @@ def query(context, prompt, model, outlook=None, coaching_style=None):
         "question": f"{full_context}\n\nUser Question: {prompt}"
     }
 
-    # Debugging output to check the payload before sending! NEVER DELETE THIS PLEASE.
+    # Debugging output to check the payload before sending
     # st.write("Sending payload:", payload)
 
     response = requests.post(api_url, json=payload)
