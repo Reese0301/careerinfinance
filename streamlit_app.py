@@ -66,16 +66,20 @@ with st.sidebar:
         unsafe_allow_html=True
     )
 
+    # Resume input text area and button for sending
     resume_text = st.text_area("Paste your resume here if you’d like Alex to remember your information for this session (Experimental Feature):")
 
+    # Button to submit resume content
     if st.button("📄 Send Resume"):
-        st.session_state.resume = resume_text
-        st.success("Resume sent successfully!")
-
-        st.session_state.messages.append({
-            "role": "system",
-            "content": "The user has uploaded their resume, which contains their information."
-        })
+        if resume_text.strip():  # Check if there is any text in the resume field
+            st.session_state.resume = resume_text
+            st.success("Resume sent successfully!")
+            st.session_state.messages.append({
+                "role": "system",
+                "content": "The user has uploaded their resume, which contains their information."
+            })
+        else:
+            st.warning("No resume detected. Please paste your resume in the text area before sending.")
 
     st.markdown(
         """
@@ -165,4 +169,4 @@ if prompt := st.chat_input("Ask your question here..."):
         model_tag = "(Mentor)" if model_choice == "Mentor" else "(Expert)"
         st.markdown(f"💭 Thought for {response_time:.2f} seconds {model_tag}\n\n{response_content}")
     
-    st.session_state.messages.append({"role": "assistant", "content": response_content})                  
+    st.session_state.messages.append({"role": "assistant", "content": response_content})
