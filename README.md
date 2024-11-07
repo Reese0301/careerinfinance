@@ -1,6 +1,6 @@
-# 💬 Chatbot template
+# 💬 Alex, AI Career Advisor in Finance & Investment Banking
 
-A simple Streamlit app that shows how to build a chatbot using OpenAI's GPT-3.5.
+An AI Agent built on high quality data to provide valuable insights.
 
 [![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://chatbot-template.streamlit.app/)
 
