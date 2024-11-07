@@ -39,6 +39,24 @@ with st.sidebar:
         outlook = st.select_slider("Outlook", options=["Pessimistic", "Practical", "Optimistic"], value="Practical")
         coaching_style = st.select_slider("Coaching Style", options=["Didactic", "Socratic"], value="Socratic")
 
+        # Resume input text area and button for sending (only for Mentor mode)
+        resume_text = st.text_area("Paste your resume here if you’d like Alex to remember your information for this session (Experimental Feature):")
+
+        # Button to submit resume content
+        if st.button("📄 Send Resume"):
+            if resume_text.strip():  # Check if there is any text in the resume field
+                st.session_state.resume = resume_text
+                st.success("Resume sent successfully!")
+                st.session_state.messages.append({
+                    "role": "system",
+                    "content": "The user has uploaded their resume, which contains their information."
+                })
+            else:
+                st.warning("No resume detected. Please paste your resume in the text area before sending.")
+    else:
+        # Clear resume state if "Expert" mode is selected
+        st.session_state.resume = ""
+
     st.markdown(
         """
         <style>
@@ -65,21 +83,6 @@ with st.sidebar:
         """,
         unsafe_allow_html=True
     )
-
-    # Resume input text area and button for sending
-    resume_text = st.text_area("Paste your resume here if you’d like Alex to remember your information for this session (Experimental Feature):")
-
-    # Button to submit resume content
-    if st.button("📄 Send Resume"):
-        if resume_text.strip():  # Check if there is any text in the resume field
-            st.session_state.resume = resume_text
-            st.success("Resume sent successfully!")
-            st.session_state.messages.append({
-                "role": "system",
-                "content": "The user has uploaded their resume, which contains their information."
-            })
-        else:
-            st.warning("No resume detected. Please paste your resume in the text area before sending.")
 
     st.markdown(
         """
@@ -112,10 +115,10 @@ def query(context, prompt, model, outlook=None, coaching_style=None):
     payload = {
         "question": f"{full_context}\n\nUser Question: {prompt}"
     }
-
+    
     #Debugging output to check the payload before sending
     #st.write("Sending payload:", payload)
-    
+
     response = requests.post(api_url, json=payload)
     if response.status_code == 200:
         return response.json().get("text")
