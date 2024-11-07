@@ -97,12 +97,12 @@ def query(context, prompt, model, outlook=None, coaching_style=None):
     additional_metadata = ""
     if model == "Mentor":
         if outlook == "Pessimistic":
-            additional_metadata += "Be more realistic and critical about the user's current situation and career outlook.\n"
+            additional_metadata += ""ADOPT A REALISTIC AND CRITICAL TONE. ACKNOWLEDGE CHALLENGES AND POTENTIAL RISKS IN THE USER'S SITUATION, AND OFFER STRATEGIES TO MITIGATE THEM.\n"
         elif outlook == "Optimistic":
-            additional_metadata += "Encourage a positive and forward-looking perspective in responses.\n"
+            additional_metadata += "ADOPT A POSITIVE AND ENCOURAGING TONE. EMPHASIZE POTENTIAL OPPORTUNITIES AND STRENGTHS IN THE USER'S SITUATION, AND OFFER STRATEGIES TO TAKE ADVANTAGE OF THEM.\n"
         
         if coaching_style == "Didactic":
-            additional_metadata += "Be comprehensive in your answers and avoid asking Socratic questions.\n"
+            additional_metadata += "USE A DIDACTIC TUTORING APPROACH. PROVIDE DETAILED, COMPREHENSIVE ANSWERS WITHOUT ASKING FOLLOW-UP QUESTIONS. FOCUS ON CLEARLY EXPLAINING CONCEPTS AND STRATEGIES TO THE USER. \n"
         elif coaching_style == "Socratic":
             additional_metadata += "After answering, use the Socratic method to ask the user one question to guide them toward deeper self-understanding of their situation and the finance industry.\n"
 
