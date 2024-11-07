@@ -97,7 +97,7 @@ def query(context, prompt, model, outlook=None, coaching_style=None):
     additional_metadata = ""
     if model == "Mentor":
         if outlook == "Pessimistic":
-            additional_metadata += ""ADOPT A REALISTIC AND CRITICAL TONE. ACKNOWLEDGE CHALLENGES AND POTENTIAL RISKS IN THE USER'S SITUATION, AND OFFER STRATEGIES TO MITIGATE THEM.\n"
+            additional_metadata += "ADOPT A REALISTIC AND CRITICAL TONE. ACKNOWLEDGE CHALLENGES AND POTENTIAL RISKS IN THE USER'S SITUATION, AND OFFER STRATEGIES TO MITIGATE THEM.\n"
         elif outlook == "Optimistic":
             additional_metadata += "ADOPT A POSITIVE AND ENCOURAGING TONE. EMPHASIZE POTENTIAL OPPORTUNITIES AND STRENGTHS IN THE USER'S SITUATION, AND OFFER STRATEGIES TO TAKE ADVANTAGE OF THEM.\n"
         
