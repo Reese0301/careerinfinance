@@ -117,9 +117,6 @@ def query(context, prompt, model, outlook=None, coaching_style=None):
     payload = {
         "question": f"{full_context}\n\nUser Question: {prompt}"
     }
-    
-    #Debugging output to check the payload before sending
-    #st.write("Sending payload:", payload)
 
     response = requests.post(api_url, json=payload)
     if response.status_code == 200:
@@ -139,23 +136,32 @@ st.markdown(
     """
 )
 
+# Display chat messages
 for message in st.session_state.messages:
     role = message["role"]
     avatar_url = "https://github.com/Reese0301/GIS-AI-Agent/blob/main/4322991.png?raw=true" if role == "assistant" else "https://github.com/Reese0301/GIS-AI-Agent/blob/main/FoxUser.png?raw=true"
     with st.chat_message(role, avatar=avatar_url):
         st.markdown(message["content"])
 
+# Capture user input and send response
 if prompt := st.chat_input("Ask your question here..."):
     st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user", avatar="https://github.com/Reese0301/GIS-AI-Agent/blob/main/FoxUser.png?raw=true"):
         st.markdown(prompt)
 
+    # Add a persistent "thinking" message
     thinking_message = random.choice(thinking_messages)
-    thinking_placeholder = st.empty()
-    thinking_placeholder.markdown(f"💭 **{thinking_message}**")
+    st.session_state.messages.append({"role": "system", "content": f"💭 **{thinking_message}**"})
 
+    # Re-display messages with "thinking" message included
+    for message in st.session_state.messages:
+        role = message["role"]
+        avatar_url = "https://github.com/Reese0301/GIS-AI-Agent/blob/main/4322991.png?raw=true" if role == "assistant" else "https://github.com/Reese0301/GIS-AI-Agent/blob/main/FoxUser.png?raw=true"
+        with st.chat_message(role, avatar=avatar_url):
+            st.markdown(message["content"])
+
+    # Generate AI response
     start_time = time.time()
-    
     CONTEXT_LIMIT = 5
     context = ""
     for msg in st.session_state.messages[-CONTEXT_LIMIT:]:
@@ -167,14 +173,19 @@ if prompt := st.chat_input("Ask your question here..."):
             context += f"System: {msg['content']}\n"
     
     response_content = query(context, prompt, model_choice, outlook if model_choice == "Mentor" else None, coaching_style if model_choice == "Mentor" else None)
-    
     end_time = time.time()
     response_time = end_time - start_time
 
-    thinking_placeholder.empty()
+    # Append AI response to session messages
+    model_tag = "(Mentor)" if model_choice == "Mentor" else "(Expert)"
+    st.session_state.messages.append({
+        "role": "assistant", 
+        "content": f"💭 Thought for {response_time:.2f} seconds {model_tag}\n\n{response_content}"
+    })
 
-    with st.chat_message("assistant", avatar="https://github.com/Reese0301/GIS-AI-Agent/blob/main/4322991.png?raw=true"):
-        model_tag = "(Mentor)" if model_choice == "Mentor" else "(Expert)"
-        st.markdown(f"💭 Thought for {response_time:.2f} seconds {model_tag}\n\n{response_content}")
-    
-    st.session_state.messages.append({"role": "assistant", "content": response_content})
+    # Display all messages including the new AI response
+    for message in st.session_state.messages:
+        role = message["role"]
+        avatar_url = "https://github.com/Reese0301/GIS-AI-Agent/blob/main/4322991.png?raw=true" if role == "assistant" else "https://github.com/Reese0301/GIS-AI-Agent/blob/main/FoxUser.png?raw=true"
+        with st.chat_message(role, avatar=avatar_url):
+            st.markdown(message["content"])
