@@ -76,7 +76,7 @@ with st.sidebar:
             <ul>
                 <li>What are the key steps to develop a career in investment banking?</li>
                 <li>Surprise me with one insight on Investment Banking Recruiting.</li>
-                <li>What are the dos and donts of a superday interview?</li>
+                <li>What are the dos and don'ts of a superday interview?</li>
                 <li>Can you suggest networking strategies for international students?</li>
             </ul>
         </div>
@@ -84,10 +84,12 @@ with st.sidebar:
         unsafe_allow_html=True
     )
 
+    # Feedback link section
     st.markdown(
         """
         <div style="margin-top: 20px; border-top: 1px solid #ccc; padding-top: 10px; text-align: center;">
-            <small>For Feedback or Concerns, contact: <a href="mailto:yizhuoyang@hotmail.com">yizhuoyang@hotmail.com</a></small>
+            <small>For Feedback or Concerns, contact: <a href="mailto:yizhuoyang@hotmail.com">yizhuoyang@hotmail.com</a></small><br>
+            <small><a href="https://docs.google.com/forms/d/e/1FAIpQLSelI6yZWQ4h0hWD7gSu6RzSwj-h_pSYkYT7Fdu2EHNgCkvQwA/viewform" target="_blank">Feedback Form</a></small>
         </div>
         """,
         unsafe_allow_html=True
@@ -117,7 +119,7 @@ def query(context, prompt, model, outlook=None, coaching_style=None):
     }
     
     #Debugging output to check the payload before sending
-    #st.write("Sending payload:", payload)
+    st.write("Sending payload:", payload)
 
     response = requests.post(api_url, json=payload)
     if response.status_code == 200:
