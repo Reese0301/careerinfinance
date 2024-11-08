@@ -118,6 +118,8 @@ def query(context, prompt, model, outlook=None, coaching_style=None):
         "question": f"{full_context}\n\nUser Question: {prompt}"
     }
 
+    st.write("Payload being sent to API:", payload)
+    
     response = requests.post(api_url, json=payload)
     if response.status_code == 200:
         return response.json().get("text")
