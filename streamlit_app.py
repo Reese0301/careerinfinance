@@ -134,8 +134,8 @@ st.markdown(
     - I am an AI Agent that answers your questions regarding Finance and Investment Banking Recruiting.
     - To provide accurate and high-performance answers, I was built using a multiple-agent framework. 
     - 🧠 This enables me to deliver better insights with sharper reasoning than ChatGPT.
-    - 🎓 Mentor Mode: I serve as your personal tutor, encouraging thoughtful reflection and helping you develop skills for continuous improvement.
-    - 💯 Expert Mode: I deliver advanced, high-precision insights to address complex questions with maximum accuracy. (I will think longer, please be patient!)
+    - 🎓 **Mentor Mode**: I serve as your personal tutor, encouraging thoughtful reflection and helping you develop skills for continuous improvement.
+    - 💯 **Expert Mode**: I deliver advanced, high-precision insights to address complex questions with maximum accuracy. (I will think longer, please be patient!)
     """
 )
 
