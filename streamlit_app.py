@@ -117,9 +117,6 @@ def query(context, prompt, model, outlook=None, coaching_style=None):
     payload = {
         "question": f"{full_context}\n\nUser Question: {prompt}"
     }
-    
-    #Debugging output to check the payload before sending
-    #st.write("Sending payload:", payload)
 
     response = requests.post(api_url, json=payload)
     if response.status_code == 200:
@@ -173,8 +170,12 @@ if prompt := st.chat_input("Ask your question here..."):
 
     thinking_placeholder.empty()
 
-    with st.chat_message("assistant", avatar="https://github.com/Reese0301/GIS-AI-Agent/blob/main/4322991.png?raw=true"):
-        model_tag = "(Mentor)" if model_choice == "Mentor" else "(Expert)"
-        st.markdown(f"💭 Thought for {response_time:.2f} seconds {model_tag}\n\n{response_content}")
+    model_tag = "(Mentor)" if model_choice == "Mentor" else "(Expert)"
+    formatted_response = f"💭 Thought for {response_time:.2f} seconds {model_tag}\n\n{response_content}"
     
-    st.session_state.messages.append({"role": "assistant", "content": response_content})
+    # Add the formatted response to session state to persist it
+    st.session_state.messages.append({"role": "assistant", "content": formatted_response})
+
+    with st.chat_message("assistant", avatar="https://github.com/Reese0301/GIS-AI-Agent/blob/main/4322991.png?raw=true"):
+        st.markdown(formatted_response)
+
