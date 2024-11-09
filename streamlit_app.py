@@ -136,6 +136,7 @@ st.markdown(
     - 🧠 This enables me to deliver better insights with sharper reasoning than ChatGPT.
     - 🎓 **Mentor Mode**: I serve as your personal tutor, encouraging thoughtful reflection and helping you develop skills for continuous improvement.
     - 💯 **Expert Mode**: I deliver advanced, high-precision insights to address complex questions with maximum accuracy. (I will think longer, please be patient!)
+    - 🏆 [**Interview Game**](https://financeinterviewgame.streamlit.app/): Engage in a competitive interview simulation where Alex challenges you to think fast and strategically.
     """
 )
 
