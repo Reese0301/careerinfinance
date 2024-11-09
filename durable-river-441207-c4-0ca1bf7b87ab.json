@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "durable-river-441207-c4",
+  "private_key_id": "0ca1bf7b87abf6bb9cb83956172362c25c042fa4",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDqZWegKyQFQfHN\nktLtcbHquE+cK1014Dc9eco3JyiQqi0TLK4lVZyvmuMrNl53wjcv5FD8t4dgfuli\nMMZd9C7asydW5P3SUUdDhpYeytqHWgMASOYzb5fXEtUO9+DipyUw/EZc4spswKUf\nSyc/NM4q7G/nYz8Khj4Kj6E5861lx/2kafOD2iYS/cWmDyMjYZdVxmx1nFS7rAyf\ni75Fk6C1UBQVTeK/g5Jx8WAr9BiT0onu/VhisILpxui8sz5EryW7lsOeY12pB1D4\nP/VLivcq342HwCimBHjW3ECqH6lvyBePwwTsjJLUwshxWwThcNZlLzC1RhpRYhg+\nXxl9FjbrAgMBAAECggEAOHsW7VF37IxnZ9HpYa3z4UtoY4lPfJv6s6WVRJT7AWEA\nW454qCZpCyeXdeI0AUebZL7vhPX0eRwbwL1gD2O3pptk71tejj9nnK3hnqni3pqh\n/n+SePJ69ChljqXMWtFL9PHVQqyjenExWMkTO/fNdipjDK6tkium54SUpRJCxjNk\nnlYq/3bZLo5M7vFESl7V7p2Ieg9JKvuz8x8z/WBj5Kww2VBrDrN5EGku8hx/vlhA\npSLRUhYXka9BYAmlq3Q7jTIkAlQennm9gg5fsiagn4pfhNPcA/h31rWCtGIwvf7z\nsD1sijaovkSQ3fGT6EC6Ps2hW3CNh/gxmzPPjEZ3gQKBgQD8xRZSiyqVy+4lFdoL\naceGaTeqxAQH7+pcXVXVoebqEBCe+etzbRU3bKEHOz/6evsn7rMXaw9fuaD62wUq\nfvtRraynSJymWqLEMFSKFY7Vcw9DvWD1KF0UrmOWxHNOOFL/sz4uByenLw3UBTki\nJJOd3qexMZCwyyRQDaNekTU3BwKBgQDtZDWmU7IEY3h8jileWEllhUV/sLDjUxHa\nCVtnAkY9sjcRa0AgfLuFwRAInHtI+hsYYcH6mRkR8YdnR283e573C+B+kIWZLVEp\ngnmGsh8aGKPzbsJEe4GXRIbGyVKH01hGj7oQF+t8jmgx2lNlTUJV15XCzdunYEe+\nBRIvoyhD/QKBgATAb7r9gr9uJfvsfTzZsDaGo9VB+hFsISu7VXG+qWidBLL4X8S7\nuDpigGRyaLF8vlvx0MwP5yoVg0Ez/NTfrjnK2gQLCWbXLVgi0HQIE7dPgmnzlW8G\nYzmQTa734nMF/AlyhSi4WbZ62/ewYXKS3XOKS/y4wc+RAg2/M+MDN8zhAoGAKx2b\nPOVQnMlwNbcgPllsozqsX7+4sOECigZPCot4NHZs2AYRtJTS/j0Na3L4VU3PpAMF\nVz19NywV+qUXxwz110rZ8ELRcPuxFQf0iIlLatL03B7Ou99urwmsLOidy7uP+eja\n01d01r+KnxtXMDvzA2JPef0nmuO6xAFpxyssAgUCgYB3HoYqlvM6/gteYLwGtwvN\nnlTLhrdqd3e35JTm9hn75RlWYrvwGcoBHuIcDtQSflfc7NiOgKWXhg9QdITYAELC\nvDt5zYiEALBS10o6RLr8kHtJdoBFmemb6YnvHqc8uARn/dws7BX58NQ3OErf9sfh\nfWrdArnkYfHeUmVlecjSnw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "streamlitbot@durable-river-441207-c4.iam.gserviceaccount.com",
+  "client_id": "116282347820297081596",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/streamlitbot%40durable-river-441207-c4.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
