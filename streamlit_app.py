@@ -119,7 +119,7 @@ def query(context, prompt, model, outlook=None, coaching_style=None):
     }
     
     #Debugging output to check the payload before sending
-    # st.write("Sending payload:", payload)
+    st.write("Sending payload:", payload)
 
     response = requests.post(api_url, json=payload)
     if response.status_code == 200:
