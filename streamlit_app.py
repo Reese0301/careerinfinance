@@ -128,7 +128,7 @@ def query(context, prompt, model, outlook=None, coaching_style=None):
         return f"Error: {response.status_code}"
 
 # Main content: Chat interface
-home_title = "💬 Alex, Career Advisor in Finance"  # Replace with the actual title you want to use
+home_title = "Alex, Career Advisor in Finance"  # Replace with the actual title you want to use
 st.markdown(
     f"""<h1 style='display: inline;'>{home_title} <span style='color:#2E9BF5; font-size: 0.6em;'>Beta</span></h1>""",
     unsafe_allow_html=True
