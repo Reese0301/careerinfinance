@@ -128,15 +128,18 @@ def query(context, prompt, model, outlook=None, coaching_style=None):
         return f"Error: {response.status_code}"
 
 # Main content: Chat interface
-st.title("💬 Alex, Career Advisor in Finance")
+home_title = "💬 Alex, Career Advisor in Finance"  # Replace with the actual title you want to use
+st.markdown(
+    f"""<h1 style='display: inline;'>{home_title} <span style='color:#2E9BF5; font-size: 0.6em;'>Beta</span></h1>""",
+    unsafe_allow_html=True
+)
 st.markdown(
     """
     - I am an AI Agent that answers your questions regarding Finance and Investment Banking Recruiting.
-    - To provide accurate and high-performance answers, I was built using a multiple-agent framework. 
-    - 🧠 This enables me to deliver better insights with sharper reasoning than ChatGPT.
-    - 🎓 **Mentor Mode**: I serve as your personal tutor, encouraging thoughtful reflection and helping you develop skills for continuous improvement.
+    - Built using a multiple-agent framework, I can deliver more accurate insights with sharper reasoning than ChatGPT. 
+    - 🎓 **Mentor Mode**: I serve as your personal tutor, encouraging thoughtful reflection and helping you develop your career for continuous improvement.
     - 💯 **Expert Mode**: I deliver advanced, high-precision insights to address complex questions with maximum accuracy. (I will think longer, please be patient!)
-    - 🏆 [**Interview Game**](https://financeinterviewgame.streamlit.app/): Engage in a competitive interview simulation challenge against Alex.
+    - 🏆 [**Interview Game**](https://financeinterviewgame.streamlit.app/): Engage in a competitive interview simulation challenge against me.
     """
 )
 
