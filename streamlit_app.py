@@ -140,7 +140,7 @@ st.markdown(
     - Built using a multiple-agent framework, I can deliver more accurate insights with sharper reasoning than ChatGPT. 
     - 🎓 **Mentor Mode**: I serve as your personal tutor, encouraging thoughtful reflection and helping you develop your career for continuous improvement.
     - 💯 **Expert Mode**: I deliver advanced, high-precision insights to address complex questions with maximum accuracy. (I will think longer, please be patient!)
-    - 🏆 [**Interview Game**](https://financeinterviewgame.streamlit.app/): Engage in a competitive interview simulation challenge against me.
+    - 🏆 [**Interview Game**](https://interviewgame.streamlit.app/): Engage in a competitive interview simulation challenge against me.
     """
 )
 
