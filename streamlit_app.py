@@ -135,6 +135,7 @@ st.markdown(
 )
 st.markdown(
     """
+    ---
     - I am an AI Agent that answers your questions regarding Finance and Investment Banking Recruiting.
     - Built using a multiple-agent framework, I can deliver more accurate insights with sharper reasoning than ChatGPT. 
     - 🎓 **Mentor Mode**: I serve as your personal tutor, encouraging thoughtful reflection and helping you develop your career for continuous improvement.
