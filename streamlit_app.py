@@ -3,6 +3,40 @@ import requests
 import random
 import time
 
+# Sidebar background styling with semi-transparent overlay and white text
+st.markdown(
+    """
+    <style>
+    /* Sidebar background image */
+    [data-testid="stSidebar"] {
+        background-image: url(https://github.com/Reese0301/chatbot/blob/main/newyork2.jpg?raw=true);
+        background-size: cover;
+        color: white;
+    }
+    /* Semi-transparent overlay behind sidebar content */
+    [data-testid="stSidebar"] > div:first-child {
+        background: rgba(0, 0, 0, 0.1); /* Black with 10% opacity */
+        padding: 20px;
+        border-radius: 10px;
+    }
+    /* Ensure all sidebar text is white */
+    [data-testid="stSidebar"] h1, 
+    [data-testid="stSidebar"] h2, 
+    [data-testid="stSidebar"] h3, 
+    [data-testid="stSidebar"] h4, 
+    [data-testid="stSidebar"] h5, 
+    [data-testid="stSidebar"] h6, 
+    [data-testid="stSidebar"] p, 
+    [data-testid="stSidebar"] ul, 
+    [data-testid="stSidebar"] li, 
+    [data-testid="stSidebar"] label {
+        color: white;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 # Define API URLs for the Mentor and Expert models
 API_URL_MENTOR = "https://flowise-9kx9.onrender.com/api/v1/prediction/e618573e-0725-49ae-81c3-9e84f16fd9df"
 API_URL_EXPERT = "https://flowise-9kx9.onrender.com/api/v1/prediction/cef2a608-65a9-4813-a3a7-171a153c40b3"
@@ -37,7 +71,7 @@ with st.sidebar:
 
     if model_choice == "Mentor":
         outlook = st.select_slider("Outlook", options=["Pessimistic", "Practical", "Optimistic"], value="Practical")
-        coaching_style = st.select_slider("Coaching Style", options=["Didactic", "Socratic"], value="Socratic")
+        coaching_style = st.select_slider("Coaching Style", options=["Instructive", "Socratic"], value="Socratic")
 
         # Resume input text area and button for sending (only for Mentor mode)
         resume_text = st.text_area("Paste your resume here if you’d like Alex to remember your information for this session (Experimental Feature):")
@@ -106,7 +140,7 @@ def query(context, prompt, model, outlook=None, coaching_style=None):
         elif outlook == "Optimistic":
             additional_metadata += "ADOPT A POSITIVE AND ENCOURAGING TONE. EMPHASIZE POTENTIAL OPPORTUNITIES AND STRENGTHS IN THE USER'S SITUATION, AND OFFER STRATEGIES TO TAKE ADVANTAGE OF THEM.\n"
         
-        if coaching_style == "Didactic":
+        if coaching_style == "Instructive":
             additional_metadata += "USE A DIDACTIC TUTORING APPROACH. PROVIDE DETAILED, COMPREHENSIVE ANSWERS WITHOUT ASKING FOLLOW-UP QUESTIONS. FOCUS ON CLEARLY EXPLAINING CONCEPTS AND STRATEGIES TO THE USER. \n"
         elif coaching_style == "Socratic":
             additional_metadata += "After answering, use the Socratic method to ask the user one question to guide them toward deeper self-understanding of their situation and the finance industry.\n"
