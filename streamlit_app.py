@@ -71,14 +71,14 @@ with st.sidebar:
 
     if model_choice == "Mentor":
         outlook = st.select_slider("Outlook", options=["Pessimistic", "Practical", "Optimistic"], value="Practical")
-        coaching_style = st.select_slider("Coaching Style", options=["Instructive", "Socratic"], value="Socratic")
+        
+        # Added "Default" option to the coaching style slider
+        coaching_style = st.select_slider("Coaching Style", options=["Instructive", "Default", "Socratic"], value="Default")
 
-        # Resume input text area and button for sending (only for Mentor mode)
         resume_text = st.text_area("Paste your resume here and upload with ↩️ if you’d like Alex to remember your information for this session (Experimental Feature):")
 
-        # Button to submit resume content
         if st.button("↩️"):
-            if resume_text.strip():  # Check if there is any text in the resume field
+            if resume_text.strip():  
                 st.session_state.resume = resume_text
                 st.success("Resume sent successfully!")
                 st.session_state.messages.append({
@@ -88,7 +88,6 @@ with st.sidebar:
             else:
                 st.warning("No resume detected. Please paste your resume in the text area before sending.")
     else:
-        # Clear resume state if "Expert" mode is selected
         st.session_state.resume = ""
 
     st.markdown(
@@ -140,21 +139,22 @@ def query(context, prompt, model, outlook=None, coaching_style=None):
         elif outlook == "Optimistic":
             additional_metadata += "ADOPT A POSITIVE AND ENCOURAGING TONE. EMPHASIZE POTENTIAL OPPORTUNITIES AND STRENGTHS IN THE USER'S SITUATION, AND OFFER STRATEGIES TO TAKE ADVANTAGE OF THEM.\n"
         
+        # Only apply style instructions if not set to Default
         if coaching_style == "Instructive":
-            additional_metadata += "USE A DIDACTIC TUTORING APPROACH. PROVIDE DETAILED, COMPREHENSIVE ANSWERS WITHOUT ASKING FOLLOW-UP QUESTIONS. FOCUS ON CLEARLY EXPLAINING CONCEPTS AND STRATEGIES TO THE USER. \n"
+            additional_metadata += "USE A DIDACTIC TUTORING APPROACH. PROVIDE DETAILED, COMPREHENSIVE ANSWERS WITHOUT ASKING FOLLOW-UP QUESTIONS. FOCUS ON CLEARLY EXPLAINING CONCEPTS AND STRATEGIES TO THE USER.\n"
         elif coaching_style == "Socratic":
             additional_metadata += "After answering, use the Socratic method to ask the user one question to guide them toward deeper self-understanding of their situation and the finance industry.\n"
 
     context_with_resume = f"{st.session_state.resume}\n\n{context}" if st.session_state.resume else context
     full_context = f"{additional_metadata}{context_with_resume}"
-    
+
     payload = {
         "question": f"{full_context}\n\nUser Question: {prompt}"
     }
-    
-    #Debugging output to check the payload before sending
-    #st.write("Sending payload:", payload)
 
+    #Debugging output to check the payload before sending
+    st.write("Sending payload:", payload)
+    
     response = requests.post(api_url, json=payload)
     if response.status_code == 200:
         return response.json().get("text")
@@ -162,7 +162,7 @@ def query(context, prompt, model, outlook=None, coaching_style=None):
         return f"Error: {response.status_code}"
 
 # Main content: Chat interface
-home_title = "Alex, Career Advisor in Finance"  # Replace with the actual title you want to use
+home_title = "Alex, Career Advisor in Finance"
 st.markdown(
     f"""<h1 style='display: inline;'>{home_title} <span style='color:#2E9BF5; font-size: 0.6em;'>Beta</span></h1>""",
     unsafe_allow_html=True
