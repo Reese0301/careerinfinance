@@ -153,7 +153,7 @@ def query(context, prompt, model, outlook=None, coaching_style=None):
     }
 
     #Debugging output to check the payload before sending
-    st.write("(🚧You're seeing this message because a team member is in the debugging process🚧)", payload)
+    #st.write("(🚧You're seeing this message because a team member is in the debugging process🚧)", payload)
     
     response = requests.post(api_url, json=payload)
     if response.status_code == 200:
@@ -174,7 +174,7 @@ st.markdown(
     - Built using a multiple-agent framework, I can deliver more accurate insights with sharper reasoning than ChatGPT. 
     - 🎓 **Mentor Mode**: I serve as your personal tutor, encouraging thoughtful reflection and helping you develop your career for continuous improvement.
     - 💯 **Expert Mode**: I deliver advanced, high-precision insights to address complex questions with maximum accuracy. (I will think longer, please be patient!)
-    - 🏆 [**Interview Game**](https://interviewgame.streamlit.app/): Engage in a competitive interview simulation challenge against me.
+    - 🏆 [**Interview Game**](https://financeinterviewaddon-bqhehhhunz83zkdks2fcxg.streamlit.app/): Engage in a competitive interview simulation challenge against me.
     """
 )
 
