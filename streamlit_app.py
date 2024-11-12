@@ -118,16 +118,16 @@ with st.sidebar:
         unsafe_allow_html=True
     )
 
-# Feedback link section
-st.markdown(
-    """
-    <div style="margin-top: 20px; border-top: 1px solid #ccc; padding-top: 10px; text-align: center;">
-        <small style="color: white;">For Feedback or Concerns, contact: <a href="mailto:yizhuoyang@hotmail.com" style="color: white;">yizhuoyang@hotmail.com</a></small><br>
-        <small><a href="https://docs.google.com/forms/d/e/1FAIpQLSelI6yZWQ4h0hWD7gSu6RzSwj-h_pSYkYT7Fdu2EHNgCkvQwA/viewform" target="_blank" style="color: white;">Feedback Form</a></small>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+    # Feedback link section
+    st.markdown(
+        """
+        <div style="margin-top: 20px; border-top: 1px solid #ccc; padding-top: 10px; text-align: center;">
+            <small style="color: white;">For Feedback or Concerns, contact: <a href="mailto:yizhuoyang@hotmail.com" style="color: white;">yizhuoyang@hotmail.com</a></small><br>
+            <small><a href="https://docs.google.com/forms/d/e/1FAIpQLSelI6yZWQ4h0hWD7gSu6RzSwj-h_pSYkYT7Fdu2EHNgCkvQwA/viewform" target="_blank" style="color: white;">Feedback Form</a></small>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 
 # Function to send queries to the appropriate API based on model choice
 def query(context, prompt, model, outlook=None, coaching_style=None):
