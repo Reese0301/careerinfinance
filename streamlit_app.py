@@ -77,7 +77,7 @@ with st.sidebar:
         resume_text = st.text_area("Paste your resume here if you’d like Alex to remember your information for this session (Experimental Feature):")
 
         # Button to submit resume content
-        if st.button("📄 Send Resume"):
+        if st.button("✅"):
             if resume_text.strip():  # Check if there is any text in the resume field
                 st.session_state.resume = resume_text
                 st.success("Resume sent successfully!")
