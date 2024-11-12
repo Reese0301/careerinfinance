@@ -74,7 +74,7 @@ with st.sidebar:
         coaching_style = st.select_slider("Coaching Style", options=["Instructive", "Socratic"], value="Socratic")
 
         # Resume input text area and button for sending (only for Mentor mode)
-        resume_text = st.text_area("Paste your resume here if you’d like Alex to remember your information for this session (Experimental Feature):")
+        resume_text = st.text_area("Paste your resume here and upload with ↩️ if you’d like Alex to remember your information for this session (Experimental Feature):")
 
         # Button to submit resume content
         if st.button("↩️"):
