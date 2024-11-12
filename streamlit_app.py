@@ -9,7 +9,7 @@ st.markdown(
     <style>
     /* Sidebar background image */
     [data-testid="stSidebar"] {
-        background-image: url(https://github.com/Reese0301/chatbot/blob/main/newyork2.jpg?raw=true);
+        background-image: url(https://github.com/Reese0301/chatbot/blob/main/newyork3.jpg?raw=true);
         background-size: cover;
         color: white;
     }
