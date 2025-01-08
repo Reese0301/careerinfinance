@@ -13,12 +13,27 @@ st.markdown(
         background-size: cover;
         color: white;
     }
-    /* Semi-transparent overlay behind sidebar content */
-    [data-testid="stSidebar"] > div:first-child {
-        background: rgba(0, 0, 0, 0.4); /* Black with 30% opacity */
-        padding: 20px;
-        border-radius: 10px;
+
+    /* Apply a consistent semi-transparent overlay for the entire sidebar */
+    [data-testid="stSidebar"]::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4); /* Black with 40% opacity */
+        z-index: 0;
+        border-radius: 10px; /* Smooth edges for the sidebar */
     }
+
+    /* Ensure all sidebar content appears above the overlay */
+    [data-testid="stSidebar"] > div:first-child {
+        position: relative;
+        z-index: 1;
+        padding: 20px;
+    }
+
     /* Ensure all sidebar text is white */
     [data-testid="stSidebar"] h1, 
     [data-testid="stSidebar"] h2, 
@@ -152,9 +167,6 @@ def query(context, prompt, model, outlook=None, coaching_style=None):
         "question": f"{full_context}\n\nUser Question: {prompt}"
     }
 
-    #Debugging output to check the payload before sending
-    #st.write("(🚧You're seeing this message because a team member is in the debugging process🚧)", payload)
-    
     response = requests.post(api_url, json=payload)
     if response.status_code == 200:
         return response.json().get("text")
