@@ -15,7 +15,7 @@ st.markdown(
     }
     /* Semi-transparent overlay behind sidebar content */
     [data-testid="stSidebar"] > div:first-child {
-        background: rgba(0, 0, 0, 0.3); /* Black with 30% opacity */
+        background: rgba(0, 0, 0, 0.4); /* Black with 30% opacity */
         padding: 20px;
         border-radius: 10px;
     }
