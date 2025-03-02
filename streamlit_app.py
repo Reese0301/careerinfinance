@@ -20,7 +20,7 @@ authenticator = stauth.Authenticate(
 )
 
 if "authentication_status" not in st.session_state or st.session_state["authentication_status"] is None:
-    st.title("Login to Access Alex, Career Advisor in Finance")
+    st.title("ThriveSphere AI Agent User Login")
 
     try:
         authenticator.login()
