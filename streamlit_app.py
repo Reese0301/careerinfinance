@@ -1,10 +1,45 @@
 import streamlit as st
+import yaml
+from yaml.loader import SafeLoader
+import streamlit_authenticator as stauth
 import requests
 import random
 import time
+from streamlit_authenticator.utilities import LoginError, ResetError, RegisterError, ForgotError, CredentialsError
 
-# Sidebar background styling with semi-transparent overlay and white text
-st.markdown(
+# 🔹 Load the authentication config file
+with open("config.yaml", "r", encoding="utf-8") as file:
+    config = yaml.load(file, Loader=SafeLoader)
+
+# 🔹 Initialize the authentication system
+authenticator = stauth.Authenticate(
+    config["credentials"],
+    config["cookie"]["name"],
+    config["cookie"]["key"],
+    config["cookie"]["expiry_days"]
+)
+
+# 🔹 If the user is not authenticated, show login & registration
+if "authentication_status" not in st.session_state or not st.session_state["authentication_status"]:
+    st.title("Login to Access Alex, Career Advisor in Finance")
+    
+    try:
+        authenticator.login()
+    except LoginError as e:
+        st.error(e)
+
+    st.warning("Please log in to continue.")
+    st.stop()  # Prevent further execution until the user logs in
+
+# 🔹 If authenticated, continue with the app
+if st.session_state["authentication_status"]:
+    st.sidebar.write(f"👋 Welcome, **{st.session_state['name']}**")
+
+    # Logout button
+    authenticator.logout()
+
+
+    st.markdown(
     """
     <style>
     /* Sidebar background image */
