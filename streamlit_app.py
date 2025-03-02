@@ -7,8 +7,6 @@ import random
 import time
 from streamlit_authenticator.utilities import LoginError, ResetError, RegisterError, ForgotError, CredentialsError
 
-st.balloons()
-
 # 🔹 Load the authentication config file
 with open("config.yaml", "r", encoding="utf-8") as file:
     config = yaml.load(file, Loader=SafeLoader)
@@ -38,6 +36,8 @@ if "authentication_status" not in st.session_state or st.session_state["authenti
 
 # 🔹 If authenticated, continue with the app
 if st.session_state["authentication_status"]:
+    st.balloons()
+    time.sleep(1.5)
     st.sidebar.write(f"👋 Welcome, **{st.session_state['name']}**")
 
     # Logout button
