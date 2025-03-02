@@ -100,25 +100,11 @@ if "authentication_status" not in st.session_state or st.session_state["authenti
 
     st.warning("Please log in to continue.")
 
-    # 🖼️ Add Second Image Below Login Block (Full Width)
+    # 🖼️ Add Second Image Below Login Block (Larger Size)
     st.markdown(
         """
-        <style>
-        .login-image-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-        }
-        .login-image {
-            max-width: 600px; /* Adjust width to match the login block */
-            width: 90%; /* Make it responsive */
-            height: auto;
-            border-radius: 10px; /* Optional rounded corners */
-        }
-        </style>
-        <div class="login-image-container">
-            <img class="login-image" src="https://github.com/Reese0301/chatbot/blob/main/WeChat%20Image_20250301185902.png?raw=true">
+        <div style="display: flex; justify-content: center; margin-top: 20px;">
+            <img src="https://github.com/Reese0301/chatbot/blob/main/WeChat%20Image_20250301185902.png?raw=true" width="600">
         </div>
         """,
         unsafe_allow_html=True
