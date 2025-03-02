@@ -20,31 +20,6 @@ authenticator = stauth.Authenticate(
 )
 
 if "authentication_status" not in st.session_state or st.session_state["authentication_status"] is None:
-     # 🎨 Background Image for Login Page Only (Darkened)
-    st.markdown(
-        """
-        <style>
-        /* Full-screen background with dark overlay */
-        .stApp {
-            background: url("https://github.com/Reese0301/chatbot/blob/main/newyork2.jpg?raw=true") no-repeat center center fixed;
-            background-size: cover;
-            position: relative;
-        }
-        /* Overlay to darken the background */
-        .stApp::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5); /* 50% black overlay */
-            z-index: -1;
-        }
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
 
     # 🎨 Centered Company Logo
     st.markdown(
