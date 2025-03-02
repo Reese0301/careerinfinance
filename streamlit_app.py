@@ -22,6 +22,10 @@ authenticator = stauth.Authenticate(
 if "authentication_status" not in st.session_state or st.session_state["authentication_status"] is None:
     st.title("ThriveSphere AI Agent User Login")
 
+    # 🎈 Show balloons when user arrives at login page
+    time.sleep(1)  # Optional: Delay to make effect smoother
+    st.balloons()
+
     try:
         authenticator.login()
     except LoginError as e:
