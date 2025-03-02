@@ -24,7 +24,7 @@ credentials:
       first_name: Demo
       last_name: User
       logged_in: false
-      password: $2b$12$NMJFt93GLMoe45ok4zCd4eo/aamH2X1WWiYpBc0vXFRn1u6MnFvBG
+      password: $2b$12$4RC7XYubXJlMln12LCsLtehkEoCgCrn6NfD.PBfFaRJhCgnKLbVfS
 pre-authorized:
   emails:
     - melsby@gmail.com
