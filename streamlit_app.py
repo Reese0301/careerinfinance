@@ -36,8 +36,9 @@ if "authentication_status" not in st.session_state or st.session_state["authenti
 
 # 🔹 If authenticated, continue with the app
 if st.session_state["authentication_status"]:
-    st.balloons()
     st.sidebar.write(f"👋 Welcome, **{st.session_state['name']}**")
+
+    st.balloons()
 
     # Logout button
     authenticator.logout()
