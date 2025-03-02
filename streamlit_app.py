@@ -47,6 +47,17 @@ if "authentication_status" not in st.session_state or st.session_state["authenti
         st.error("Username/password is incorrect. Please try again.")  # Another way to handle it
 
     st.warning("Please log in to continue.")
+
+    # 🖼️ Add Second Image Below Login Block
+    st.markdown(
+        """
+        <div style="display: flex; justify-content: center; margin-top: 20px;">
+            <img src="https://github.com/Reese0301/chatbot/blob/main/WeChat%20Image_20250301185902.png?raw=true" width="400">
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+    
     st.stop()  # Prevent further execution until the user logs in
 
 # 🔹 If authenticated, continue with the app
