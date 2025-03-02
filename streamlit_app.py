@@ -200,7 +200,7 @@ with st.sidebar:
     st.markdown(
         """
         <div style="margin-top: 20px; border-top: 1px solid #ccc; padding-top: 10px; text-align: center;">
-            <small style="color: white;">For Feedback or Concerns, contact: <a href="mailto:yizhuoyang@hotmail.com" style="color: white;">yizhuoyang@hotmail.com</a></small><br>
+            <small style="color: white;">For Feedback or Concerns, contact: <a href="mailto:yizhuo.yang@emory.edu" style="color: white;">yizhuo.yang@emory.edu</a></small><br>
             <small><a href="https://forms.gle/DVCFnbxY9NLx2ZNm7" target="_blank" style="color: white;">Feedback Form</a></small>
         </div>
         """,
