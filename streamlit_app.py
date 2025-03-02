@@ -52,7 +52,7 @@ if "authentication_status" not in st.session_state or st.session_state["authenti
     st.markdown(
         """
         <div style="display: flex; justify-content: center; margin-top: 20px;">
-            <img src="https://github.com/Reese0301/chatbot/blob/main/WeChat%20Image_20250301185902.png?raw=true" width="1000">
+            <img src="https://github.com/Reese0301/chatbot/blob/main/WeChat%20Image_20250301185902.png?raw=true" width="1500">
         </div>
         """,
         unsafe_allow_html=True
