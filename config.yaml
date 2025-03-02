@@ -4,11 +4,11 @@ cookie:
   name: some_cookie_name
 credentials:
   usernames:
-    jsmith:
+    jasminezhou:
       email: jsmith@gmail.com
       failed_login_attempts: 0
-      first_name: John
-      last_name: Smith
+      first_name: Jasmine
+      last_name: Zhou
       logged_in: false
       password: $2b$12$iWlVOac3uujRvTrXDi6wructXftKmo/GyQd6SMu5FmyX306kH.yFO
     rbriggs:
