@@ -19,14 +19,17 @@ authenticator = stauth.Authenticate(
     config["cookie"]["expiry_days"]
 )
 
-# 🔹 If the user is not authenticated, show login & registration
-if "authentication_status" not in st.session_state or not st.session_state["authentication_status"]:
+if "authentication_status" not in st.session_state or st.session_state["authentication_status"] is None:
     st.title("Login to Access Alex, Career Advisor in Finance")
-    
+
     try:
         authenticator.login()
     except LoginError as e:
-        st.error(e)
+        st.error("Incorrect username or password. Please try again.")  # Show error message
+
+    # Show warning if authentication failed
+    if st.session_state["authentication_status"] is False:
+        st.error("Username/password is incorrect. Please try again.")  # Another way to handle it
 
     st.warning("Please log in to continue.")
     st.stop()  # Prevent further execution until the user logs in
