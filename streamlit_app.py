@@ -38,6 +38,7 @@ if "authentication_status" not in st.session_state or st.session_state["authenti
 if st.session_state["authentication_status"]:
     st.sidebar.write(f"👋 Welcome, **{st.session_state['name']}**")
 
+    time.sleep(1.5)
     st.balloons()
 
     # Logout button
