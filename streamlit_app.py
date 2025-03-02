@@ -20,12 +20,23 @@ authenticator = stauth.Authenticate(
 )
 
 if "authentication_status" not in st.session_state or st.session_state["authentication_status"] is None:
-    st.title("ThriveSphere AI Agent User Login")
+
+    # 🎨 Centered Company Logo
+    st.markdown(
+        """
+        <div style="display: flex; justify-content: center;">
+            <img src="https://github.com/Reese0301/chatbot/blob/main/Picture1.png?raw=true" width="250">
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 
     # 🎈 Show balloons when user arrives at login page
     time.sleep(1)  # Optional: Delay to make effect smoother
     st.balloons()
 
+    st.title("ThriveSphere AI Agent User Login")
+    
     try:
         authenticator.login()
     except LoginError as e:
