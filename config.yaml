@@ -5,19 +5,19 @@ cookie:
 credentials:
   usernames:
     jasminezhou:
-      email: jsmith@gmail.com
+      email: xxxx@gmail.com
       failed_login_attempts: 0
       first_name: Jasmine
       last_name: Zhou
       logged_in: false
       password: $2b$12$gfb2bbMu4VRzw/CGrC9kLOfI/Uy8MG3kDYK6K0TnLbNzARHJfsRlO
-    rbriggs:
-      email: rbriggs@gmail.com
+    reeseyang:
+      email: xxx@gmail.com
       failed_login_attempts: 0
-      first_name: Rebecca
-      last_name: Briggs
+      first_name: Reese
+      last_name: Yang
       logged_in: false
-      password: $2b$12$uNaTgvGPG9rMbzOJHYaPQePw0DUfp1qHBrSq6l4O304qani6pKFpm
+      password: $2b$12$4XgGtBQTmleOYKKd0gGrVe5zZlcp0GcK4y4MFqluCJ5UN5/ggKeam
 pre-authorized:
   emails:
     - melsby@gmail.com
