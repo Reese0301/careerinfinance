@@ -7,6 +7,8 @@ import random
 import time
 from streamlit_authenticator.utilities import LoginError, ResetError, RegisterError, ForgotError, CredentialsError
 
+st.balloons()
+
 # 🔹 Load the authentication config file
 with open("config.yaml", "r", encoding="utf-8") as file:
     config = yaml.load(file, Loader=SafeLoader)
