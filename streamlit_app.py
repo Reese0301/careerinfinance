@@ -41,8 +41,6 @@ if st.session_state["authentication_status"]:
 
     # Logout button
     authenticator.logout()
-
-    st.balloons()
    
     st.markdown(
     """
