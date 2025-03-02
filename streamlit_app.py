@@ -48,11 +48,77 @@ if "authentication_status" not in st.session_state or st.session_state["authenti
 
     st.warning("Please log in to continue.")
 
-    # 🖼️ Add Second Image Below Login Block
+    import streamlit as st
+import yaml
+from yaml.loader import SafeLoader
+import streamlit_authenticator as stauth
+import requests
+import random
+import time
+from streamlit_authenticator.utilities import LoginError, ResetError, RegisterError, ForgotError, CredentialsError
+
+# 🔹 Load the authentication config file
+with open("config.yaml", "r", encoding="utf-8") as file:
+    config = yaml.load(file, Loader=SafeLoader)
+
+# 🔹 Initialize the authentication system
+authenticator = stauth.Authenticate(
+    config["credentials"],
+    config["cookie"]["name"],
+    config["cookie"]["key"],
+    config["cookie"]["expiry_days"]
+)
+
+# 🔹 If the user is not authenticated, show login page
+if "authentication_status" not in st.session_state or st.session_state["authentication_status"] is None:
+    
+    # 🎨 Centered Company Logo (Above the Title)
     st.markdown(
         """
-        <div style="display: flex; justify-content: center; margin-top: 20px;">
-            <img src="https://github.com/Reese0301/chatbot/blob/main/WeChat%20Image_20250301185902.png?raw=true" width="400">
+        <div style="display: flex; justify-content: center;">
+            <img src="https://github.com/Reese0301/chatbot/blob/main/Picture1.png?raw=true" width="250">
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
+    # 🎈 Show balloons when user arrives at login page
+    time.sleep(1)  # Optional: Delay for a smoother effect
+    st.balloons()
+
+    # 🔹 Login Title
+    st.title("ThriveSphere AI Agent User Login")
+
+    try:
+        authenticator.login()
+    except LoginError as e:
+        st.error("Incorrect username or password. Please try again.")  # Show error message
+
+    # Show warning if authentication failed
+    if st.session_state["authentication_status"] is False:
+        st.error("Username/password is incorrect. Please try again.")  # Another way to handle it
+
+    st.warning("Please log in to continue.")
+
+    # 🖼️ Add Second Image Below Login Block (Full Width)
+    st.markdown(
+        """
+        <style>
+        .login-image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+        .login-image {
+            max-width: 600px; /* Adjust width to match the login block */
+            width: 90%; /* Make it responsive */
+            height: auto;
+            border-radius: 10px; /* Optional rounded corners */
+        }
+        </style>
+        <div class="login-image-container">
+            <img class="login-image" src="https://github.com/Reese0301/chatbot/blob/main/WeChat%20Image_20250301185902.png?raw=true">
         </div>
         """,
         unsafe_allow_html=True
