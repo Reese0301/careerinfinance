@@ -36,7 +36,10 @@ if "authentication_status" not in st.session_state or st.session_state["authenti
     st.balloons()
 
     st.title("ThriveSphere AI Agent User Login")
-    
+
+# Add demo login credentials note
+    st.markdown("_Demo login — Username: `demouser` | Password: `aiforfinance`_")
+
     try:
         authenticator.login()
     except LoginError as e:
